@@ -1,7 +1,7 @@
 <?php
 
 include '../libs/connectDB.php';
-$TbName = "ResUser";
+$TbName = "tb_payment";
   // check table exists
 $sql="DESCRIBE ".$TbName."";
 $result=mysqli_query($conn,$sql);
@@ -17,16 +17,10 @@ else {
   //  echo "<br>Table does not exist";
     // sql to create table
     $sql = "CREATE TABLE ".$TbName." (
-    id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(30) NOT NULL,
-    lastname VARCHAR(30) NOT NULL,
-    sex VARCHAR(10) NOT NULL,
-    address TEXT NOT NULL,
-    phone VARCHAR(10) NOT NULL,
-    img VARCHAR(255) ,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(30) NOT NULL,
-    credit DOUBLE(10,2) DEFAULT 0.00
+    payment_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id INT(10) NOT NULL,
+    Cus_id INT(10) NOT NULL,
+    payment_cost double(10,2) NOT NULL
     )";
     // check create table
     if (mysqli_query($conn, $sql)) {
